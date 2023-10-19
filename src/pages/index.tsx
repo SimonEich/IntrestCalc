@@ -39,15 +39,21 @@ function showYears(){
        <div>
         <h1>Intrest Calculator</h1>
         <div className="">
+          <div>
           <label htmlFor="Kapital">Kapital</label>
           <input type="number" placeholder="Kapital" className="bg-slate-100 m-8" value={kapital}
                 onChange={e => setKapital(e.target.value)} />
+          </div>
+          <div>
           <label htmlFor="">Years</label>
           <input type="number" placeholder="Years" className="bg-slate-100 m-8" value={year}
                 onChange={e => setYear(e.target.value)} />
+          </div>
+          <div>
           <label htmlFor="">Intrest in Percent</label>
           <input type="number" placeholder="Intrest" className="bg-slate-100 m-8" value={intrest}
                 onChange={e => setIntrest(e.target.value)} />
+          </div>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={showYears}>Calculate</button>
           
           <h1>{result}</h1>
