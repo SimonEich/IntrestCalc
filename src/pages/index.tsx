@@ -36,8 +36,10 @@ function showYears(){
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-       <div>
+
         <h1>Intrest Calculator</h1>
+
+       <div className="flex bg-slate-300	rounded-lg p-8">
         <div className="">
           <div>
           <label htmlFor="Kapital">Kapital</label>
@@ -54,9 +56,12 @@ function showYears(){
           <input type="number" placeholder="Intrest" className="bg-slate-100 m-8" value={intrest}
                 onChange={e => setIntrest(e.target.value)} />
           </div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={showYears}>Calculate</button>
-          
+          <div className="flex flex-col items-center justify-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={showYears}>Calculate</button>
+          </div>
+          <div className="flex flex-col items-center justify-center mt-6">
           <h1>{result}</h1>
+          </div>
         </div>
         
 
