@@ -1,29 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Input } from "postcss";
 import { useState } from "react";
 
 import { api } from "~/utils/api";
 
-const intrestYear = []
+const interestYear = []
 
 
 
 export default function Home() {
 
-  const [year,setYear] = useState("0");
-  const [intrest,setIntrest] = useState("0");
-  const [kapital, setKapital] = useState("0")
-  const [result, setResult] = useState("0")
+  const [year,setYear] = useState("")
+  const [interest,setInterest] = useState("");
+  const [capital, setCapital] = useState("")
+  const [result, setResult] = useState("")
 
 function showYears(){
   setYear(year)
-  setIntrest(intrest)
-  setKapital(kapital)
-  const res = String(Number(kapital) * (1 + Number(intrest)/100)**Number(year))
+  setInterest(interest)
+  setCapital(capital)
+  const res = String(Number(capital) * (1 + Number(interest)/100)**Number(year))
 
   setResult(res)
   console.log(year)
-  console.log(intrest)
+  console.log(interest)
   console.log(String(res))
 }
 
@@ -37,24 +38,42 @@ function showYears(){
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
 
-        <h1>Intrest Calculator</h1>
+        <h1>Interest Calculator</h1>
 
-       <div className="flex bg-slate-300	rounded-lg p-8">
+       <div className="flex bg-slate-300 rounded-lg p-8">
         <div className="">
-          <div>
-          <label htmlFor="Kapital">Kapital</label>
-          <input type="number" placeholder="Kapital" className="bg-slate-100 m-8" value={kapital}
-                onChange={e => setKapital(e.target.value)} />
+          <div className="w-80">
+          <label htmlFor="Kapital" className="">Kapital:</label>
+          <input type="number" placeholder="Kapital" className="bg-slate-100 m-8" value={capital}
+                onChange={e => setCapital(e.target.value)} 
+                onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            showYears()
+            }
+          }
+        }/>
           </div>
           <div>
-          <label htmlFor="">Years</label>
+          <label htmlFor="" className="">Years:</label>
           <input type="number" placeholder="Years" className="bg-slate-100 m-8" value={year}
-                onChange={e => setYear(e.target.value)} />
+                onChange={e => setYear(e.target.value)} 
+                onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            showYears()
+            }
+          }
+        }/>
           </div>
           <div>
-          <label htmlFor="">Intrest in Percent</label>
-          <input type="number" placeholder="Intrest" className="bg-slate-100 m-8" value={intrest}
-                onChange={e => setIntrest(e.target.value)} />
+          <label htmlFor="" className="">Interest in Percent:</label>
+          <input type="number" placeholder="Interest" className="bg-slate-100 m-8" value={interest}
+                onChange={e => setInterest(e.target.value)} 
+                onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            showYears()
+            }
+          }
+        }/>
           </div>
           <div className="flex flex-col items-center justify-center">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={showYears}>Calculate</button>
